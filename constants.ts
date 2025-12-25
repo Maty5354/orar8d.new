@@ -2,7 +2,7 @@
 import { Manual, ScheduleRow, ThemeDefinition, ThemePreset, Folder } from './types';
 
 export const DEFAULT_THEME = {
-  theme: "auto",
+  theme: "dark",
   accentColor: "#6196ff",
   font: "Inter"
 };
