@@ -1,0 +1,7 @@
+{
+  "name": "Orar 8D",
+  "description": "A comprehensive school schedule application with dynamic themes, task management, weather integration, and textbook resources.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

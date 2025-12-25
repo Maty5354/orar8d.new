@@ -1,0 +1,76 @@
+
+# 🚀 PROJECT SPECIFICATION: TODO LIST OVERHAUL
+
+## 1. 📂 FOLDER SYSTEM
+**Goal**: Organize tasks into customizable categories.
+*   [x] **Data Model**:
+    *   `Folder` entity: `{ id, name, icon (emoji/lucide), color (hex), description }`.
+    *   `Task` entity update: Add `folderId`.
+*   [x] **Features**:
+    *   Create custom folders with user-selected icons and colors.
+    *   Edit/Delete folders.
+    *   "All Tasks" default view vs. Folder-specific views.
+    *   Sidebar or Tab navigation for folders.
+
+## 2. ➕ ADVANCED TASK CREATION (The "Add" Panel)
+**Goal**: Replace inline input with a robust task composition interface.
+*   [x] **UI Component**: Slide-over panel or centered Modal.
+*   [x] **Fields**:
+    *   **Header**: Task Title (Large input).
+    *   **Folder**: Dropdown/Select to assign a folder.
+    *   **Details**:
+        *   Description (Text area with link/notes support).
+        *   Subtasks: Dynamic list of toggleable items (`{ id, text, isCompleted }`).
+    *   **Metrics (Bar Selectors)**:
+        *   Priority: [Very Low, Low, Medium, High, Very High].
+        *   Difficulty: [Very Easy, Easy, Medium, Hard, Very Hard].
+    *   **Scheduling**:
+        *   Due Date & Time Picker.
+    *   **Reminders**:
+        *   Configuration for notification timing (e.g., "15 mins before", "1 hour before").
+        *   Support for setting X amount of time before task.
+    *   [ ] file & photo attachments (Deferred)
+
+## 3. 🔔 NOTIFICATIONS & REMINDERS
+**Goal**: Omnichannel alerts for tasks.
+*   [x] **In-App Toasts**:
+    *   Trigger visual toast when a task is due or overdue while the app is open.
+*   [x] **Push Notifications**:
+    *   Request browser permissions (`Notification.requestPermission`).
+    *   Interval-based check to trigger system notifications on Desktop/Mobile.
+*   [x] **Logic**:
+    *   Background interval checking (`useEffect`).
+    *   Compare due dates against current time.
+
+## 4. 🌪️ FILTERS & SORTERS
+**Goal**: Advanced list management.
+*   [x] **Filters**:
+    *   Status (Active/Completed).
+    *   Priority/Difficulty ranges (Via Sort/Group).
+    *   Date ranges (Today, This Week, Overdue) (Via Grouping).
+*   [x] **Sorting**:
+    *   Date (Asc/Desc).
+    *   Priority (High to Low).
+    *   Manual ordering (Drag & Drop).
+*   [x] **Search bar**
+
+
+## 5. 🎨 UI/UX & MISC
+*   [x] **Visuals**:
+    *   Modern, clean aesthetics (Glassmorphism where appropriate).
+    *   Color-coded badges for priorities and folders.
+    *   Animated progress bars for task metrics.
+    *   Custom labels.
+*   [x] **Audio**:
+    *   Sound effects for: Completing task, adding task, switching folders, error states.
+*   [x] **Responsiveness**:
+    *   Mobile-friendly forms and navigation.
+
+## 🛠️ IMPLEMENTATION PLAN
+1.  **Type Definitions**: Update `types.ts` with `Folder` and enhanced `Task` interfaces. [x]
+2.  **State Management**: Refactor state to handle folders and complex tasks. [x]
+3.  **Components**:
+    *   `FolderList.tsx`: For managing and selecting folders. [x] (Integrated in Overlay)
+    *   `TaskPanel.tsx`: The new creation/edit interface. [x] (TaskFormModal)
+    *   `TaskItem.tsx`: Updated card design. [x] (Inline)
+4.  **Integration**: Connect notifications and local storage persistence. [x]
